@@ -102,6 +102,79 @@ G F <BR>
 <hr>
 ['0', '1', '2', '3', '4']
 <hr>
+### PROGRAM:
+
+```
+from collections import deque
+from collections import defaultdict
+
+def bfs(graph,start,visited,path):
+    queue = deque()
+    path.append(start)
+    queue.append(start)
+    visited[start] = True
+    while len(queue) != 0:
+        tmpnode = queue.popleft()
+        for neighbour in graph[tmpnode]:
+            if visited[neighbour] == False:
+                path.append(neighbour)
+                queue.append(neighbour)
+                visited[neighbour] = True
+    return path
+
+graph = defaultdict(list)
+v,e = map(int,input().split())
+for i in range(e):
+    u,v = map(str,input().split())
+    graph[u].append(v)
+    graph[v].append(u)
+
+start = 'A'
+path = []
+visited = defaultdict(bool)
+traversedpath = bfs(graph,start,visited,path)
+print(traversedpath)
+```
+### OUTPUT:
+![307574897-081f4a78-4b87-4d48-b14d-2a42fe087e77](https://github.com/natsaravanan/19AI405ExpNo3/assets/113497037/a4ffc4e6-f09a-474a-ac76-619251ab7f22)
+
+
+### PROGRAM:
+
+```
+from collections import deque
+from collections import defaultdict
+
+def bfs(graph,start,visited,path):
+    queue = deque()
+    path.append(start)
+    queue.append(start)
+    visited[start] = True
+    while len(queue) != 0:
+        tmpnode = queue.popleft()
+        for neighbour in graph[tmpnode]:
+            if visited[neighbour] == False:
+                path.append(neighbour)
+                queue.append(neighbour)
+                visited[neighbour] = True
+    return path
+
+graph = defaultdict(list)
+v,e = map(int,input().split())
+for i in range(e):
+    u,v = map(str,input().split())
+    graph[u].append(v)
+    graph[v].append(u)
+
+start = '0'
+path = []
+visited = defaultdict(bool)
+traversedpath = bfs(graph,start,visited,path)
+print(traversedpath)
+```
+### OUTPUT:
+![307575009-ed9d6ea3-debd-420b-b37d-51e5154bfc37](https://github.com/natsaravanan/19AI405ExpNo3/assets/113497037/499f67d1-9bf4-4ec5-ab64-f56de0856381)
+
 <h3>Result:</h3>
 <hr>
 <p>Thus,a Graph was constructed and implementation of Breadth First Search for the same graph was done successfully.</p>
