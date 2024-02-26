@@ -1,6 +1,6 @@
 <h1>ExpNo 3 : Implement Breadth First Search Traversal of a Graph</h1> 
-<h3>Name: Saravanan N</h3>
-<h3>Register Number/Staff Id: TSML006</h3>
+<h3>Name: ARAVIND SAMY.P</h3>
+<h3>Register Number/Staff Id: 212222230011</h3>
 <H3>Aim:</H3>
 <p>To Implement Breadth First Search Traversal of a Graph using Python 3.</p>
 <h3>Theory:</h3>
@@ -81,15 +81,89 @@ D E <BR>
 D G <BR>
 G F <BR>
 <hr>
+### PROGRAM:
+
+```python
+from collections import deque
+from collections import defaultdict
+
+def bfs(graph,start,visited,path):
+    queue = deque()
+    path.append(start)
+    queue.append(start)
+    visited[start] = True
+    while len(queue) != 0:
+        tmpnode = queue.popleft()
+        for neighbour in graph[tmpnode]:
+            if visited[neighbour] == False:
+                path.append(neighbour)
+                queue.append(neighbour)
+                visited[neighbour] = True
+    return path
+
+graph = defaultdict(list)
+v,e = map(int,input().split())
+for i in range(e):
+    u,v = map(str,input().split())
+    graph[u].append(v)
+    graph[v].append(u)
+
+start = 'A'
+path = []
+visited = defaultdict(bool)
+traversedpath = bfs(graph,start,visited,path)
+print(traversedpath)
+```
+
 <h3>Sample Output</h3>
 <hr>
 ['A', 'B', 'C', 'F', 'E', 'D', 'G']
 
 <hr>
 
+### output:
+
+![307574897-081f4a78-4b87-4d48-b14d-2a42fe087e77](https://github.com/natsaravanan/19AI405ExpNo3/assets/113497037/066147d6-5d82-4fbe-9b04-95304bf8e3c1)
+
+
 <hr>
 <h3>Sample Input</h3>
 <hr>
+
+### PROGRAM:
+
+```
+from collections import deque
+from collections import defaultdict
+
+def bfs(graph,start,visited,path):
+    queue = deque()
+    path.append(start)
+    queue.append(start)
+    visited[start] = True
+    while len(queue) != 0:
+        tmpnode = queue.popleft()
+        for neighbour in graph[tmpnode]:
+            if visited[neighbour] == False:
+                path.append(neighbour)
+                queue.append(neighbour)
+                visited[neighbour] = True
+    return path
+
+graph = defaultdict(list)
+v,e = map(int,input().split())
+for i in range(e):
+    u,v = map(str,input().split())
+    graph[u].append(v)
+    graph[v].append(u)
+
+start = '0'
+path = []
+visited = defaultdict(bool)
+traversedpath = bfs(graph,start,visited,path)
+print(traversedpath)
+
+```
 5 6 <BR>
 0 1 <BR>
 0 2 <BR>
@@ -102,6 +176,10 @@ G F <BR>
 <hr>
 ['0', '1', '2', '3', '4']
 <hr>
+
+### OUTPUT:
+ ![307575009-ed9d6ea3-debd-420b-b37d-51e5154bfc37](https://github.com/natsaravanan/19AI405ExpNo3/assets/113497037/a625edb7-d621-45a7-9d79-f6b14c8fbf78)
+
 <h3>Result:</h3>
 <hr>
 <p>Thus,a Graph was constructed and implementation of Breadth First Search for the same graph was done successfully.</p>
